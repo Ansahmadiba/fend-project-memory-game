@@ -38,18 +38,18 @@ function shuffle(array) {
     return array;
 }
 
-function listener(){
-
-  var deck = document.querySelector('.card');
-  deck.addEventListener("click" , function(){
-	clickCard();
-
-});
+function listener(){//set up listener
+  //someone else logic I tried to do this with querySelectorAll code but failed
+  let deck = document.getElementsByClassName("card");
+  for (let deckcard of deck){
+  deckcard.addEventListener("click",clickCard);
+ }
 }
 
-function clickCard(){
+
+function clickCard(deckcard){
 //  $('.deck').
-  console.log( " hello");
+  console.log( deckcard);
 
 }
 
