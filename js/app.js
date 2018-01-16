@@ -10,6 +10,7 @@ let array = ['fa-diamond','fa-paper-plane-o',
 
 let star = 3;
 let shuffled = 0;
+let openedCard = 0;
 
 // Display the cards on the page
 
@@ -47,10 +48,34 @@ function listener(){//set up listener
 }
 
 
-function clickCard(deckcard){
+function clickCard(){
 //  $('.deck').
-  console.log( deckcard);
+this.className = 'card open show click-off'; //display card symbol
+openCard();
+}
 
+function openCard(){
+  movesCount();
+openedCard[0] =   this.className;
+console.log(openedCard[0]);
+}
+var count = 0;
+function movesCount(){
+  count++;
+  console.log(count);
+  calculateStars();
+}
+function calculateStars(){
+
+  if(count < 15){
+    console.log("One Star, 15 count star would be 1");
+  }
+  else if( count => 15 && count <= 25){
+    console.log("Two stars, greater then 15 and less 25");
+  }
+    else{
+    console.log("no star")
+  }
 }
 
 
@@ -66,25 +91,3 @@ function clickCard(deckcard){
  */
 
 init();
-
-
-// c.addEventListener("click", function(eve)
-// {
-//  displaycard();
-//   openedCard();
-// });
-//
-// }
-// let card = document.querySelector(".card");
-//
-// function clickCard(){
-//   if(card.className ==="card")
-//   //card.toggle("true");{}
-// {
-//   card.setAttribute("class","card open show");
-// }
-//   else {
-//     card.setAttribute("class", "card");
-//
-//   }
-// }
