@@ -41,7 +41,7 @@
 	@description shuffle the array 
 	Shuffle function from http://stackoverflow.com/a/2450976
 	*/
-
+	
 	function shuffle(array) {
 	let currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -60,9 +60,16 @@
 	@description set up the event listener for a card. If a card is clicked:
 	
 	*/
-	
+	let checkClicked = false;
+	let runTime;
+
 	function cardListener(){
 		//Some logic was used from fellow udacian but this looks bad in terms of performance. Need to improve this piece of code.
+	    if (!checkClicked) {
+        runTime = setInterval(add, 1000); // timer
+        checkClicked = true;
+    }    
+
 		let deckListen = document.getElementsByClassName("card");
 			for(let deckcards of deckListen)
 			{
@@ -79,7 +86,7 @@
 	@description display the card's symbol (put this functionality in another function that you call from this one)
 	
 	*/
-	
+
 	function displayCard(target){
 
 		if(displayedCards.length < 2){	//cards limit is 2 
@@ -161,17 +168,18 @@
 	}
 	// construct and show the summary modal when game ends
 	function scorePanel() {
-	
+	//clearTimeOut(timer);
+	let totalTime = timer.innerHTML;
 	let totalMoves = moves;
     let rating = document.getElementsByClassName("fa-star").length;
-    gameResult.innerHTML = "Your total moves  were " + totalMoves + " and star rating " + rating + "!";
+    gameResult.innerHTML = "It took "+totalTime+" time,your total moves  were " + totalMoves + " and star rating " + rating + "!";
     // open modal
     modal.style.display = "block"; 
 
 	//console.log("Here goes the summary model");
 	}
 
-		/**
+	/**
 	 * Set star symbol open.
 	 * @param {number} star
 	 */
@@ -186,6 +194,27 @@
 		if(incrementMatchCount >= 8){
 			scorePanel();
 		}
+	}
+	/* Stopwatch function from http://jsfiddle.net/oukjfavu/ 
+	 		THIS CODE DOES NOT BELONG TO ME
+	*/
+
+	const timer = document.getElementById("timer-id");
+	let seconds = 0, minutes = 0, hours = 0;
+
+	function add() {
+	    seconds++;
+	    if (seconds >= 60) {
+	        seconds = 0;
+	        minutes++;
+	        if (minutes >= 60) {
+	            minutes = 0;
+	            hours++;
+	        }
+	    }
+	    timer.innerHTML = (hours ? (hours > 9 ? hours : "0" + hours) : "00")
+	        + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00")
+	        + ":" + (seconds > 9 ? seconds : "0" + seconds);
 	}
 
 	/*

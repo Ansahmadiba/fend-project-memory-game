@@ -130,3 +130,13 @@ h1 {
     width: 80%; /* Could be more or less, depending on screen size */
     text-align: center;
 }
+
+/*Timer*/
+#timer-id{
+
+}
+.timer{
+    text-align: center;
+    width: 400px;
+    margin : 20px;
+}
