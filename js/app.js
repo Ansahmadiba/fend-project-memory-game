@@ -158,7 +158,7 @@
 		let incrementMoveCount1 = '<span class="moves">'+moves+'</span>' ;
 		document.querySelector(".moves").innerHTML = incrementMoveCount1; 
 		//console.log(moves); check whether this is working or not.
-		moves++;
+		++moves;
 		if(moves == 16){
 			updateRating(2);
 		}
@@ -168,17 +168,17 @@
 	}
 	// construct and show the summary modal when game ends
 	function scorePanel() {
-	//clearTimeOut(timer);
+	clearTimeout(runTime);
 	let totalTime = timer.innerHTML;
-	let totalMoves = moves;
+	let totalMoves = moves-1;
     let rating = document.getElementsByClassName("fa-star").length;
-    gameResult.innerHTML = "It took "+totalTime+" time,your total moves  were " + totalMoves + " and star rating " + rating + "!";
+    gameResult.innerHTML = "It took "+totalTime+" time , your total moves were " + totalMoves + " and star rating " + rating + " !";
     // open modal
     modal.style.display = "block"; 
 
 	//console.log("Here goes the summary model");
 	}
-
+	
 	/**
 	 * Set star symbol open.
 	 * @param {number} star
